@@ -4,11 +4,11 @@ const USER_API_URL = "http://localhost:8080/api/produit";
 
 class ProduitService{
     addprod(prod){
-        return axios.post(USER_API_URL + "/addprod", prod);
+        return axios.post(USER_API_URL, prod);
     }
 
     listeByIdSec(idSec){
-        return axios.get(USER_API_URL + "/listeByIdSec/" + idSec);
+        return axios.get(USER_API_URL + "/" + idSec);
     }
 
     statistiqueJ(){

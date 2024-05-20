@@ -111,8 +111,8 @@ export default function () {
     const RefreshListe = () => {
         OuvrierService.getOuvrier(idSec)
             .then(res => {
-                console.log(res.data);
-                setAllOuvrier(res.data);
+                console.log(res.data.ouvriers);
+                setAllOuvrier(res.data.ouvriers);
             })
             .catch(error => {
                 console.error('Erreur lors de la récupération des utilisateurs après l\'ajout :', error);

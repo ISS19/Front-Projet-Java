@@ -27,10 +27,10 @@ export default function Production() {
 
     const addProduit = (e) => {
         e.preventDefault();
-        const prod = { "type": type, "produit": produit, "quantite": quantite, "idSec": idSec, "mois": mois };
+        const prod = { "type": type, "produit": produit, "quantite": quantite, "idsec": idSec, "mois": mois };
         ProduitService.addprod(prod)
             .then((res) => {
-                if (res.status === 201) {
+                if (res.status === 200) {
                     toast.success("Nouveau produit ajouter", toastOption);
                     setQuantite("");
                     RefreshListe();
@@ -54,8 +54,8 @@ export default function Production() {
     const RefreshListe = () => {
         ProduitService.listeByIdSec(idSec)
             .then(res => {
-                console.log(res.data.prod);
-                setAllProd(res.data.prod);
+                console.log(res.data);
+                setAllProd(res.data);
             })
             .catch(error => {
                 console.error('Erreur lors de la récupération des utilisateurs après l\'ajout :', error);
@@ -127,8 +127,8 @@ export default function Production() {
                             </thead>
 
                             <tbody>
-                                {allProd.length > 0 && allProd.map(prod => (
-                                    <tr key={prod._id} /* onClick={() => handleRowClick(user)} */ style={{ cursor: "pointer" }}>
+                                {allProd && allProd.length > 0 && allProd.map(prod => (
+                                    <tr key={prod.id} /* onClick={() => handleRowClick(user)} */ style={{ cursor: "pointer" }}>
                                         <td><span>{prod.type}</span></td>
                                         <td><span>{prod.produit}</span></td>
                                         <td><span>{prod.quantite}</span></td>
